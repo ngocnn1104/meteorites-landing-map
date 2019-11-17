@@ -28,13 +28,7 @@ d3.json("https://d3js.org/world-50m.v1.json", function(json) {
     .attr("fill", "rgba(255,255,255,0.5)");
 
     d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json", function(response) {
-      const list = response.features;
-      // let mass = [];
-      // for (let i in list) {
-      //   mass.push(Number(list[i].properties.mass));
-      // }
-      //
-      // console.log(d3.min(mass), d3.max(mass));
+      const list = response.features.sort((a, b) => b.properties.mass - a.properties.mass);
 
       for (let i in list) {
         let circle = svg.append("circle")
